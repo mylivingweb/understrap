@@ -31,7 +31,7 @@
 
         <!-- If fixed top is set to yes then set it in code -->
 
-    <?php if ( get_option( 'understrap_nav' ) == true ) : ?>
+    <?php if ( get_option( 'understrap_nav' ) === true ) : ?>
 
         <nav class="site-navigation navbar-fixed-top" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
     
