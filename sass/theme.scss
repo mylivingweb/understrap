@@ -1,15 +1,22 @@
 /*****************************************************************
 Import all needed 3rd party sass files plus your own style and variables
 
-0. ../bower_components/_s/sass/style  // Adding underscores default styles. Don´t needed if you use Bootstrap for styling 
+Important to run required install steps to get all files in and ready for gulp
+
+npm install
+bower install
+gulp copy-assets
+
 --------------------------------------
-1. theme/theme_variables.scss // Overwriting Bootstrap variables and for own variables <-- ADD YOUR VARIABLES HERE
+1. theme/variables.scss // Overwriting Bootswatch variables and for own variables <-- ADD YOUR VARIABLES HERE
 --------------------------------------
-2.../bower_components/bootstrap-sass/assets/stylesheets/bootstrap // adding bootstrap from bower components folder. Make sure you run bower install before! <- Dont edit this files!
+2. bootstrap-sass/bootstrap // adding bootstrap from bower components folder. Make sure you run bower install before! <- Dont edit this files!
 --------------------------------------
-3. understrap/understrap.scss // Some basic understrap styles. Helps to combine Bootsrap and _s theme and provides some basic styleing for additonal functions <- Dont edit this files!
+3. theme/bootswatch //imported bootswatch them from /bower_components/bootswatch/yeti
 --------------------------------------
-4. ../bower_components/fontawesome/scss/font-awesome <- Dont edit this files! If you don´t need/want Font Awesome support comment out this line
+4. understrap/understrap.scss // Some basic understrap styles. Helps to combine Bootsrap and _s theme and provides some basic styleing for additonal functions <- Dont edit this files!
+--------------------------------------
+5. fontawesome/font-awesome <- Dont edit this files! If you don´t need/want Font Awesome support comment out this line
 --------------------------------------
 
 
@@ -24,16 +31,17 @@ Import all needed 3rd party sass files plus your own style and variables
 
 
 
-// Any additional imported files //
-6. theme/theme.scss"; // <-- ADD YOUR STYLES HERE
 ***************************************************************** */
 
-// @import "../bower_components/_s/sass/style";
-@import "theme/theme_variables";  // <--------- Add your variables into this file. Also add variables to overwrite Bootstrap or UnderStrap variables here
+@import "theme/variables";  // <--------- Add your variables into this file. Also add variables to overwrite Bootswatch 
 @import "bootstrap-sass/bootstrap";
+@import "theme/bootswatch";
 @import "understrap/understrap";
 @import "fontawesome/font-awesome";
 
 
 // Any additional imported files //
-@import "theme/theme";  // <--------- Add your styles into this file
+//@import "theme/theme";  // 
+
+
+/*****Changed to fit my work flow ****/ 

@@ -79,6 +79,12 @@ function understrap_theme_customize_register( $wp_customize ) {
         'type'       => 'textarea',
         'settings'   => 'understrap_theme_script_code_setting'
     ) );
+    /**Creating Panel for settings*/
+    $wp_customize->add_panel( 'understrap_settings_panel', array(
+    'title' => 'UnderStrap Settings',
+    'description' => 'This is a description of this panel',
+    'priority' => 10
+    ) );
 }
 add_action( 'customize_register', 'understrap_theme_customize_register' );
 
@@ -91,3 +97,50 @@ function understrap_customize_preview_js() {
 	wp_enqueue_script( 'understrap_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20130508', true );
 }
 add_action( 'customize_preview_init', 'understrap_customize_preview_js' );
+
+/****Adding in Custom Settings***/
+
+/**Added Logo upload**/
+/**Added Ability to make nav static **/
+function understrap_logo_customizer( $wp_customize ) {
+    $wp_customize->add_section( 'understrap_logo_section' , array(
+    'title'       => __( 'Upload Your Logo', 'understrap' ),
+    'priority'    => 30,
+    'description' => 'Upload a logo to replace the default site name and description in the header',
+    'panel' => 'understrap_settings_panel'
+    ));
+    $wp_customize->add_setting( 'understrap_logo' );
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'understrap_logo', array(
+    'label'    => __( 'Logo', 'understrap' ),
+    'section'  => 'understrap_logo_section',
+    'settings' => 'understrap_logo'
+    )));
+
+}
+add_action( 'customize_register', 'understrap_logo_customizer' );
+/**End Logo**/
+/**Begin Static Nav Setting */
+function understrap_nav_customizer( $wp_customize ) {
+    $wp_customize->add_section( 'understrap_nav_section' , array(
+    'title'       => __( 'Static Navbar Setting', 'understrap' ),
+    'priority'    => 30,
+    'description' => 'Choose yes if you want nav bar to be static',
+    'panel' => 'understrap_settings_panel',
+    ));
+    $wp_customize->add_setting( 'understrap_nav', array(
+    'default'        => true,
+    'capability'     => 'edit_theme_options',
+    'type'           => 'option',
+    ) );
+    $wp_customize->add_control( 'understrap_nav', array(
+    'label'    => __( '', 'understrap' ),
+    'section'  => 'understrap_nav_section',
+    'settings' => 'understrap_nav',
+    'type'     => 'radio',
+    'choices'  => array(
+            'true'  => 'yes',
+            'false' => 'no'
+    )));
+
+}
+add_action( 'customize_register', 'understrap_nav_customizer' );

@@ -5,7 +5,7 @@
   "authors": [
     "Holger Koenemann <office@holgerkoenemann.de>"
   ],
-  "description": "UnderStrap is a Bootstrap and underscores based WordPress theme framework.",
+  "description": "UnderStrap is a Bootstrap and underscores plus Bootswatch based WordPress theme framework.",
   "moduleType": "globals",
   "main": [
     "sass/theme.scss"
@@ -27,7 +27,9 @@
     "bootstrap-sass": "~3.3.6",
     "fontawesome": "~4.5.0",
     "_s": "https://github.com/Automattic/_s.git",
-    "OwlCarousel2": "~2.0.0-beta.3"
+    "OwlCarousel2": "~2.0.0-beta.3",
+    "bootswatch": "latest"
+
   },
   "_source": "https://github.com/holger1411/understrap.git",
   "_target": "~0.3.8",

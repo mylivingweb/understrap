@@ -28,10 +28,22 @@
     <!-- ******************* The Navbar Area ******************* -->
     <div class="wrapper-fluid wrapper-navbar" id="wrapper-navbar">
 	
-        <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'understrap' ); ?></a>
+
+        <!-- If fixed top is set to yes then set it in code -->
+
+    <?php if ( get_option( 'understrap_nav' ) == true ) : ?>
+
+        <nav class="site-navigation navbar-fixed-top" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+    
+    <?php else : ?>
+    
+        <!-- If fixed top is set to no then do nothing -->
+
 
         <nav class="site-navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
-                            
+    
+     <?php endif; ?>
+
             <div class="navbar navbar-inverse">
 
                 <div class="container">
@@ -40,7 +52,21 @@
 
                         <div class="col-xs-12">
 
-                            <div class="navbar-header">
+                        <div class="navbar-brand">
+                            <!-- Display logo if uploaded -->
+                            <?php if ( get_theme_mod( 'understrap_logo' ) ) : ?>
+                                    <a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'>
+                                    <img src='<?php echo esc_url( get_theme_mod( 'understrap_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' class="img-responsive responsive pull-left" id="logo">
+                                    </a>
+                            <?php else : ?>
+                            <!-- Display site title if no logo -->
+                                    <a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><?php bloginfo( 'name' ); ?></a>
+                            <?php endif; ?>
+
+                            </div>
+
+                            <div class="navbar-header pull-right">
+
 
                                 <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
                                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -50,17 +76,14 @@
                                     <span class="icon-bar"></span>
                                 </button>
 
-                                <!-- Your site title as branding in the menu -->
-                                <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-
-                            </div>
+                            
 
                             <!-- The WordPress Menu goes here -->
                             <?php wp_nav_menu(
                                     array(
                                         'theme_location' => 'primary',
                                         'container_class' => 'collapse navbar-collapse navbar-responsive-collapse',
-                                        'menu_class' => 'nav navbar-nav',
+                                        'menu_class' => 'nav navbar-nav ',
                                         'fallback_cb' => '',
                                         'menu_id' => 'main-menu',
                                         'walker' => new wp_bootstrap_navwalker()

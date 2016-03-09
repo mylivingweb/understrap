@@ -15,14 +15,29 @@ var uglify = require('gulp-uglify');
 var merge2 = require('merge2');
 var ignore = require('gulp-ignore');
 var rimraf = require('gulp-rimraf');
+var sourcemaps = require('gulp-sourcemaps');
+var debug = require('gulp-debug');
+
+
+gulp.task('default', function(){
+    return gulp.src('./sass/theme.scss')
+    .pipe(plumber())
+    .pipe(sass({
+        noCache : true,
+        style   : "compact"})
+    .on('error', sass.logError))
+    .pipe(gulp.dest('./css'));
+    });
 
 // Run: 
 // gulp sass
 // Compiles SCSS files in CSS
 gulp.task('sass', function () {
-    gulp.src('./sass/*.scss')
+    gulp.src('./sass/theme.scss')
         .pipe(plumber())
+        .pipe(sourcemaps.init()) 
         .pipe(sass())
+        .pipe(sourcemaps.write('./css'))
         .pipe(gulp.dest('./css'));
 });
 
@@ -31,7 +46,7 @@ gulp.task('sass', function () {
 // Starts watcher. Watcher runs gulp sass task on changes
 gulp.task('watch', function () {
     gulp.watch('./sass/**/*.scss', ['sass']);
-    gulp.watch('./css/theme.css', ['cssnano']);
+  //  gulp.watch('./css/theme.css', ['cssnano']);
 });
 
 // Run: 
@@ -63,6 +78,10 @@ gulp.task('copy-assets', function() {
 // Copy all Bootstrap SCSS files
     gulp.src(basePaths.bower + 'bootstrap-sass/assets/stylesheets/**/*.scss')
        .pipe(gulp.dest('./sass/bootstrap-sass'));
+
+// Copy all bootswatch SCSS files - Replace yeti with your choice of theme
+    gulp.src(basePaths.bower + 'bootswatch/yeti/**/*.scss')
+       .pipe(gulp.dest('./sass/theme'));
 
 // Copy all Bootstrap Fonts
     gulp.src(basePaths.bower + 'bootstrap-sass/assets/fonts/bootstrap/*.{ttf,woff,woff2,eof,svg}')

@@ -6,7 +6,7 @@
  */
 
 function understrap_scripts() {
-    wp_enqueue_style( 'understrap-theme', get_stylesheet_directory_uri() . '/css/theme.min.css', array(), '0.3.7');
+    wp_enqueue_style( 'understrap-theme', get_stylesheet_directory_uri() . '/css/theme.min.css', array(), '0.3.9');
 
     // Unregister the default jQuery
     wp_deregister_script('jquery');  
@@ -32,7 +32,3 @@ function understrap_scripts() {
     }
 
 add_action( 'wp_enqueue_scripts', 'understrap_scripts' );
-
-// Removing the fuc!?$% emoji´s
-remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-remove_action( 'wp_print_styles', 'print_emoji_styles' ); 

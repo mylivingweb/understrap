@@ -1,5 +1,3 @@
-Start talking: [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/holger1411/understrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
-
 UnderStrap WordPress Theme Framework
 ===
 
@@ -7,8 +5,26 @@ Website: http://understrap.com
 
 Child Theme Project: https://github.com/holger1411/understrap-child
 
+Forked Repo
+==
+
+mylivingweb: https://github.com/mylivingweb/understrap.git
+
+Child Theme Coming soon
+
 Changelog
 =
+            - **0.3. Mar. 9th 2016 Fork**
+                   - Adding footer widget area
+                   - Adjust Bootstrap markup for searchform and search widget
+                   - Fork Changes Below
+                   - added bootswatch theme
+                   - added logo upload and fixed nav setting to customizer
+                   - added css sourcemaps to gulp for troubleshooting if needed
+                   - move some actions from enqueue to functions for better viz for me
+                   - changed around theme.scss to make it easier to read and simple to modify
+
+
             - **0.3.8 Mar. 9th 2016 Pre-Release**
                    - Adding footer widget area
                    - Adjust Bootstrap markup for searchform and search widget
@@ -94,16 +110,21 @@ Some basics about the SCSS and CSS files comes with UnderStrap:
 - The theme itself uses the style.css in the root directory just to identify the theme inside of WordPress. The file is not loaded by the theme and did not include any styles
 - The theme.css file in /css/ subdirectory provides all styles. It is composed by five different SCSS sets and one variables file from /sass/theme.scss:
 
-                  - 1 "theme/theme_variables";  // <--------- Add your variables into this file. Also add variables to overwrite Bootstrap or UnderStrap variables here
-                  - 2 "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";  // <--------- All the Bootstrap stuff - Don´t edit this!
-                  - 3 "understrap/understrap"; // <--------- Some basic WordPress stylings and needed styles to combine Boostrap and Underscores
-                  - 4 "../bower_components/fontawesome/scss/font-awesome"; // <--------- Font Awesome Icon styles
+                  @import "theme/variables";  // <--------- Add your variables into this file. Also add variables to overwrite Bootswatch 
+                  @import "bootstrap-sass/bootstrap";
+                  @import "theme/bootswatch";
+                  @import "understrap/understrap";
+                  @import "fontawesome/font-awesome";
 
-                  // Any additional imported files //
-                  - 5 "theme/theme";  // <--------- Add your styles into this file
-
-- Don´t edit the files no. 2-4 files/filesets or you aren´t able to update it without overwriting your own work!
-- Your design goes into: /sass/theme directory. Add your styles to the theme.scss file and your variables to the _theme_variables.scss. Or add other scss files into it and @import it into theme.scss
+Development
+=
+- Clone repo
+- npm install
+- bower install
+- Edit gulpfile if you want different bootswatch theme than Yeti
+- gulp copy-assets
+- gulp sass cssnano
+- Edit
 
 Installation
 =
