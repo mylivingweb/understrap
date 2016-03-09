@@ -27,12 +27,7 @@
     
     <!-- ******************* The Navbar Area ******************* -->
     <div class="wrapper-fluid wrapper-navbar" id="wrapper-navbar">
-	
-
-        
-
-    <?php 
-    $setting = get_option('understrap_nav');
+	<?php 
     if ( get_option('understrap_nav') == 1) : ?>
 
         <!-- If fixed top is set to 1 then set it in code -->
