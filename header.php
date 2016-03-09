@@ -29,21 +29,23 @@
     <div class="wrapper-fluid wrapper-navbar" id="wrapper-navbar">
 	
 
-        <!-- If fixed top is set to yes then set it in code -->
+        
 
-    <?php if ( get_option( 'understrap_nav' ) === true ) : ?>
+    <?php 
+    $setting = get_option('understrap_nav');
+    if ( get_option('understrap_nav') == 1) : ?>
 
+        <!-- If fixed top is set to 1 then set it in code -->
         <nav class="site-navigation navbar-fixed-top" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
     
-    <?php else : ?>
+   <?php else : ?>
     
-        <!-- If fixed top is set to no then do nothing -->
-
+        <!-- If fixed top is set to 0 then do nothing -->
 
         <nav class="site-navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+
     
      <?php endif; ?>
-
             <div class="navbar navbar-inverse">
 
                 <div class="container">

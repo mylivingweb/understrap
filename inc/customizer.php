@@ -138,8 +138,8 @@ function understrap_nav_customizer( $wp_customize ) {
     'settings' => 'understrap_nav',
     'type'     => 'radio',
     'choices'  => array(
-            'true'  => 'yes',
-            'false' => 'no'
+            '1'  => 'yes',
+            '0' => 'no'
     )));
 
 }
